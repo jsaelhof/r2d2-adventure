@@ -1,0 +1,459 @@
+html {
+  background-color: #000;
+  background-image: url('/images/stars.png');
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden;
+}
+
+*:focus {
+  outline: none;
+}
+
+#root {
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+div > img {
+  display: block;
+}
+
+/* Game wrapper styling */
+
+.game {
+  display: flex;
+  opacity: 0;
+  animation: game-fade-in 2s ease-in-out forwards;
+  box-shadow: 0 0 50px rgba(255,255,255,0.12);
+}
+
+@keyframes game-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* Intro animation styling */
+
+.intro {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-skip {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 0.6em;
+  font-weight: bold;
+  color: #FFFF82;
+  opacity: 0.7;
+}
+
+.intro-skip:hover {
+  opacity: 1;
+}
+
+.intro-galaxy {
+  opacity: 0;
+  animation-name: galaxy-fade-in, galaxy-fade-out;
+  animation-duration: 5s, 3s;
+  animation-timing-function: ease-in-out;
+  animation-delay: 1s, 8s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes galaxy-fade-in {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes galaxy-fade-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.intro-crawl .crawl {
+  position: absolute;
+  color: #FFFF82;
+  font-weight: bold;
+  font-size: 3.5em;
+  text-align: justify;
+  transform: perspective(350px) rotateX(18deg);
+  transform-origin: 50% 100%;
+  overflow: hidden;
+  height: 50em;
+  margin-left: -42%;
+  width: 84%;
+  bottom: 0;
+  left: 50%;
+}
+
+/* Set the scrolling animation and position it */
+.intro-crawl .crawl-content {
+  animation-name: crawl, crawl-fade-out;
+  animation-duration: 50s, 8s;
+  animation-timing-function: linear;
+  animation-delay: 10s, 33s;
+  animation-fill-mode: initial, forwards;
+  position: absolute;
+  top: 100%;
+}
+
+.crawl-title {
+  text-align: center;
+}
+
+.crawl-title > div:first-child {
+  margin-bottom: 40px;
+}
+
+.crawl-title > div:last-child {
+  margin-bottom: 90px;
+}
+
+@keyframes crawl {
+  0% { top: 100%; }
+  100% { top: 0%; }
+}
+
+@keyframes crawl-fade-out {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+/* UI Styling */
+
+.ui {
+  width: 200px;
+  height: 800px;
+  background: #222;
+}
+
+.ui input {
+  width: 50px;
+}
+
+.ui .btn {
+  margin: 0 20px;
+}
+
+.ui-char-panel {
+  margin-bottom: 40px;
+}
+
+.ui-char-portrait {
+  position: relative;
+}
+
+.ui-char-portrait-icon {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+}
+
+.ui-control-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.ui-control {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.ui-control-value {
+  font-size: 1.7em;
+  color: #EEE;
+  margin: 5px 0;
+  text-shadow: 0 0 10px rgba(97,243,204,0.5);
+}
+
+.ui-control-label {
+  font-size: 0.7em;
+  color: #61F3CC;
+  text-shadow: 0 0 5px rgba(97,243,204,0.25);
+}
+
+.ui-turn-left, .ui-turn-right {
+  width: 40px;
+  height: 40px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+.ui-turn-left {
+  background: url('/images/left-off.png');
+}
+
+.ui-turn-left:hover {
+  background: url('/images/left-on.png');
+}
+
+.ui-turn-right {
+  background: url('/images/right-off.png');
+}
+
+.ui-turn-right:hover {
+  background: url('/images/right-on.png');
+}
+
+.ui-move {
+  display: flex;
+  flex-direction: column;
+}
+
+.ui-move input[type=text] {
+  background: rgba(97,243,204,0.1);
+  border: none;
+  border-radius: 5px;
+  width: 68px;
+  text-align: center;
+  font-size: 1.5em;
+  color: #EEE;
+  text-shadow: 0 0 10px rgba(97,243,204,0.5);
+  transition: all 0.30s ease-in-out;
+  outline: none;
+  padding: 3px 0px;
+  margin: 5px 0px 10px 0px;
+  border: 1px solid transparent;
+}
+ 
+.ui-move input[type=text]:focus {
+  box-shadow: 0 0 5px rgba(255,255,255,0.5);
+  padding: 3px 0px;
+  margin: 5px 0px 10px 0px;
+  border: 1px solid rgb(13, 94, 90);
+}
+
+/* Board styling */
+
+.board {
+  width: 800px;
+  height: 800px;
+  position: relative;
+}
+
+.board-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.board img {
+  width: 100%;
+  height: 100%;
+}
+
+/* 
+Creates a checkerboard pattern over the div.
+Note that the background size values must 2x the grid size value.
+The backgorund position non-zero values use the grid size value.
+*/
+.board .grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(45deg, rgba(0,0,0,0.15) 25%, transparent 25%), linear-gradient(-45deg, rgba(0,0,0,0.15) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, rgba(0,0,0,0.15) 75%), linear-gradient(-45deg, transparent 75%, rgba(0,0,0,0.15) 75%);
+  background-size: 16px 16px;
+  background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+  box-shadow: inset 0 0 20px black;
+}
+
+
+/* Character styling (Map characters) */
+
+.char {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  transform-origin: 0 0;
+  transition: all 0.50s ease-in-out;
+}
+
+.char-sprite {
+  background-size: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.char-hero {
+  background-image: url('/images/r2d2_map.png');
+}
+
+.char-target {
+  background-image: url('/images/obiwan_map.png');
+}
+
+.char-report {
+  /* Need to include both scale and translate here because the .char class has the translate style and the two cannot be separated */
+  transform: scale(2) translate(-50%,-50%);
+}
+
+
+/* Report styling */
+
+.report {
+  color: #EEE;
+  background: #222;
+  padding: 3px 0;
+  border: 1px solid #111;
+  border-radius: 3px;
+  font-size: 6px;
+  width: 50px;
+  text-align: center;
+  margin-top: 5px;
+  transform: translateX(-30%);
+  text-shadow: 0 0 5px rgba(97,243,204,0.5);
+}
+
+.report div:first-child {
+  margin-bottom: 3px;
+}
+
+/* Modal dialog styling */
+
+.modal-shown {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.modal-hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.modal-box {
+  display: flex;
+  position: absolute;
+  width: 650px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #222;
+  color: #EEE;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.4);
+  border: 2px solid #111;
+}
+
+.modal-image img {
+  width: 200px;
+  height: 200px;
+}
+
+.modal-content {
+  flex: 2;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.modal-message {
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  line-height: 1.4em;
+}
+
+.modal-subtext {
+  font-size: 0.8em;
+  color: #61F3CC;
+  flex: 2;
+}
+
+.modal-buttons {
+  margin-top: 20px;
+}
+
+.modal-block {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+/* App Buttons */
+
+.app-button, .app-button:focus, .app-button:active {
+  font: unset;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+  sans-serif;
+  font-size: 1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 200px;
+  border: 2px solid #61F3CC;
+  color: #61F3CC;
+  text-align: center;
+  padding: 5px;
+  min-width: 100px;
+  background-color: transparent;
+  transition: background-color 200ms ease-in-out;
+}
+
+.app-button:hover {
+  color: #222;
+  background-color: #61F3CC;
+}
+
+.app-button-small, .app-button-small:focus, .app-button-small:active {
+  width: 70px;
+  min-width: 70px;
+  font-size: 0.8em;
+  border-width: 2px;
+}
+
+
+
+@media only screen and (max-width : 800px) {
+  .intro-crawl .crawl {
+    font-size: 2.5em;
+    height: 60em;
+  }
+}
+
+@media only screen and (max-width : 500px) {
+  .intro-galaxy img {
+    width: 300px;
+  }
+
+  .intro-crawl .crawl {
+    font-size: 2.0em;
+    height: 70em;
+  }
+}
