@@ -1,4 +1,4 @@
-## Challenge: R2-D2 Adventure
+## Challenge: R2-D2 Adventure 
 
 #### by Jason Saelhof (jsaelhof@gmail.com)
 
