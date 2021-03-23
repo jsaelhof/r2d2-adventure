@@ -10,6 +10,18 @@ I used [Create React App](https://github.com/facebook/create-react-app) to gener
 
 src/components/App.js is the main component of the app and manages all the state.
 
+#### Screenshots
+
+###### Intro
+![image](https://user-images.githubusercontent.com/7939225/112173415-2886cc00-8bbb-11eb-81d8-a63fe2b3e896.png)
+
+###### Main Game
+![image](https://user-images.githubusercontent.com/7939225/112173611-5835d400-8bbb-11eb-9976-1d57feaf8644.png)
+
+###### Victory
+![image](https://user-images.githubusercontent.com/7939225/112173808-861b1880-8bbb-11eb-8366-ab0b1e8cb95b.png)
+
+
 #### Challenges
 
 The main challenges were on the visual side. One issue was fitting the 100x100 grid entirely in the viewport while making the characters large enough to be seen easily. Initially I had planned on using images of R2-D2 and Obi Wan but they were too small to be seen clearly on the map, particularly when I needed to be able to display which direction they were facing. With more time, I think that I would have either made the map draggable or provided a two-part mini-map and zoomed-in map view.
